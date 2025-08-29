@@ -1,3 +1,4 @@
 com\myprojects\bookshelf\controllers\BookController.class
 com\myprojects\bookshelf\ServletInitializer.class
 com\myprojects\bookshelf\BookshelfApplication.class
+com\myprojects\bookshelf\models\Book.class
