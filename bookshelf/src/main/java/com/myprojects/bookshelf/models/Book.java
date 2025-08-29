@@ -18,9 +18,9 @@ public class Book {
     private String description;
 
     @Getter @Setter
-    private boolean read;
+    private String read;
 
     @Getter @Setter
-    private boolean inBookshelf;
+    private String inBookshelf;
 
 }
