@@ -3,10 +3,7 @@ package com.myprojects.bookshelf.controllers;
 import com.myprojects.bookshelf.dao.BookDao;
 import com.myprojects.bookshelf.models.Book;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,12 +29,16 @@ public class BookController {
 
     @RequestMapping(value = "api/books", method = RequestMethod.GET)
     public List<Book> getBooks(){
-        //List<Book> books = new ArrayList<>();
         return bookDao.getBooks();
     }
 
+    @RequestMapping(value = "api/books", method = RequestMethod.POST)
+    public void registerBook(@RequestBody Book book){
+        bookDao.register(book);
+    }
+
     @RequestMapping(value = "api/books/{id}", method = RequestMethod.DELETE)
-    public void deleteBooks(@PathVariable Long id){
+    public void deleteBook(@PathVariable Long id){
         bookDao.deleteBook(id);
     }
 
