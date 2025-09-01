@@ -14,7 +14,7 @@ let datos = {};
 
 
       const request = await fetch('api/books', {
-        method: 'GET',
+        method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
