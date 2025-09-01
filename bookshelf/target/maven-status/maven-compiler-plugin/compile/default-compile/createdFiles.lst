@@ -1,4 +1,6 @@
 com\myprojects\bookshelf\controllers\BookController.class
+com\myprojects\bookshelf\dao\BookDao.class
 com\myprojects\bookshelf\ServletInitializer.class
 com\myprojects\bookshelf\BookshelfApplication.class
+com\myprojects\bookshelf\dao\BookDaoImp.class
 com\myprojects\bookshelf\models\Book.class
