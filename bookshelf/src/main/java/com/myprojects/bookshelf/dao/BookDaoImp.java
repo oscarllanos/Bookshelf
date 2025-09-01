@@ -26,4 +26,9 @@ public class BookDaoImp implements BookDao {
         Book book = entityManager.find(Book.class, id);
         entityManager.remove(book);
     }
+
+    @Override
+    public void register(Book book) {
+        
+    }
 }
