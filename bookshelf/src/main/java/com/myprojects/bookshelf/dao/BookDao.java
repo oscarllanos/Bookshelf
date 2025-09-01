@@ -9,4 +9,6 @@ public interface BookDao {
     List<Book> getBooks();
 
     void deleteBook(Long id);
+
+    void register(Book book);
 }
