@@ -16,19 +16,19 @@ public class Book {
     @Getter @Setter @Column(name = "id")
     private Long id;
 
-    @Getter @Setter @Column(name = "title")
+    @Getter @Setter @Column(name = "Título")
     private String title;
 
-    @Getter @Setter @Column(name = "author")
+    @Getter @Setter @Column(name = "Autor")
     private String author;
 
-    @Getter @Setter @Column(name = "description")
+    @Getter @Setter @Column(name = "Descripción")
     private String description;
 
-    @Getter @Setter @Column(name = "read")
+    @Getter @Setter @Column(name = "leído")
     private String read;
 
-    @Getter @Setter @Column(name = "inbookshelf")
+    @Getter @Setter @Column(name = "En mi librero")
     private String inBookshelf;
 
 }
