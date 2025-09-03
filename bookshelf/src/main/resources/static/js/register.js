@@ -23,6 +23,15 @@ let datos = {};
       });
 
 alert ("El usuario ha sido registrado exitosamente");
+clearFields();
 location.reload();
 
+}
+
+function clearFields() {
+    document.getElementById('txtTitle').value = "";
+    document.getElementById('txtAuthor').value = "";
+    document.getElementById('txtDescription').value = "";
+    document.getElementById('txtRead').value = "";
+    document.getElementById('txtInBookshelf').value = "";
 }
