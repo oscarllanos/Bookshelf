@@ -29,6 +29,6 @@ public class BookDaoImp implements BookDao {
 
     @Override
     public void register(Book book) {
-        
+        entityManager.merge(book);
     }
 }
