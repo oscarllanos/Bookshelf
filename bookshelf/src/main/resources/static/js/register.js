@@ -21,7 +21,8 @@ let datos = {};
         },
         body: JSON.stringify(datos)
       });
-      const books = await request.json();
 
+alert ("El usuario ha sido registrado exitosamente");
+location.reload();
 
 }
