@@ -2,5 +2,9 @@ com\myprojects\bookshelf\controllers\BookController.class
 com\myprojects\bookshelf\dao\BookDao.class
 com\myprojects\bookshelf\ServletInitializer.class
 com\myprojects\bookshelf\BookshelfApplication.class
+com\myprojects\bookshelf\models\User.class
 com\myprojects\bookshelf\dao\BookDaoImp.class
+com\myprojects\bookshelf\dao\UserDao.class
+com\myprojects\bookshelf\dao\UserDaoImp.class
+com\myprojects\bookshelf\controllers\AuthController.class
 com\myprojects\bookshelf\models\Book.class
