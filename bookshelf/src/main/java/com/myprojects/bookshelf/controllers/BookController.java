@@ -14,18 +14,6 @@ public class BookController {
     @Autowired
     private BookDao bookDao;
 
-    @RequestMapping(value = "api/books/{id}", method = RequestMethod.GET)
-    public Book getBook(@PathVariable Long id){
-        Book book = new Book();
-        book.setId(id);
-        book.setTitle("El Juego del Ángel");
-        book.setAuthor("Carlos Ruiz Zafón");
-        book.setDescription("La historia de David Martin");
-        book.setRead("Sí");
-        book.setInBookshelf("Sí");
-
-        return book;
-    }
 
     @RequestMapping(value = "api/books", method = RequestMethod.GET)
     public List<Book> getBooks(){
@@ -42,29 +30,4 @@ public class BookController {
         bookDao.deleteBook(id);
     }
 
-    @RequestMapping(value = "book/search/{title}")
-    public Book searchBook(@PathVariable String title){
-        Book book = new Book();
-        book.setId(1L);
-        book.setTitle(title);
-        book.setAuthor("Carlos Ruiz Zafón");
-        book.setDescription("La historia de David Martin");
-        book.setRead("Sí");
-        book.setInBookshelf("No");
-
-        return book;
-    }
-
-    @RequestMapping(value = "book/update")
-    public Book updateBook(){
-        Book book = new Book();
-        book.setId(1L);
-        book.setTitle("El Juego del Ángel");
-        book.setAuthor("Carlos Ruiz Zafón");
-        book.setDescription("La historia de David Martin");
-        book.setRead("Sí");
-        book.setInBookshelf("Sí");
-
-        return book;
-    }
 }
