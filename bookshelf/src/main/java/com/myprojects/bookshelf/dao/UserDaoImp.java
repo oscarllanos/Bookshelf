@@ -1,6 +1,8 @@
 package com.myprojects.bookshelf.dao;
 
 import com.myprojects.bookshelf.models.User;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
@@ -16,13 +18,24 @@ public class UserDaoImp implements UserDao{
     private EntityManager entityManager;
 
     @Override
+    public void registerUser(User user) {
+        entityManager.merge(user);
+    }
+
+    @Override
     public boolean verificarCredenciales(User user) {
-        String query = "From User WHERE email = :email AND password = :password";
+        String query = "From User WHERE email = :email";
         List<User> lista = entityManager.createQuery(query)
                 .setParameter("email", user.getEmail())
-                .setParameter("password", user.getPassword())
                 .getResultList();
 
-        return !lista.isEmpty();
+        if (lista.isEmpty()) {
+            return false;
+        }
+
+        String passwordHashed = lista.get(0).getPassword();
+
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        return argon2.verify(passwordHashed, user.getPassword());
     }
 }

@@ -22,7 +22,7 @@ let datos = {};
         body: JSON.stringify(datos)
       });
 
-alert ("El usuario ha sido registrado exitosamente");
+alert ("El libro ha sido registrado exitosamente");
 clearFields();
 location.reload();
 

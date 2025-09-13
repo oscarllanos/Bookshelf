@@ -1,3 +1,4 @@
+com\myprojects\bookshelf\controllers\UserController.class
 com\myprojects\bookshelf\controllers\BookController.class
 com\myprojects\bookshelf\dao\BookDao.class
 com\myprojects\bookshelf\ServletInitializer.class
