@@ -4,18 +4,22 @@ $(document).ready(function() {
     loadBooks();
 
   $('#bookTable').DataTable();
+
+  updateUserEmail();
 });
+
+function updateUserEmail(){
+
+    document.getElementById('txt-email-user').outerHTML = localStorage.email;
+
+}
 
 async function loadBooks(){
 
 
       const request = await fetch('api/books', {
         method: 'GET',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        //body: JSON.stringify({a: 1, b: 'Textual content'})
+        headers: getHeaders()
       });
       const books = await request.json();
 
@@ -36,6 +40,14 @@ async function loadBooks(){
 
 }
 
+function getHeaders(){
+    return {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.token
+    };
+}
+
     async function deleteBook(id){
 
     if (!confirm('¿Desea eliminar este libro?')){
@@ -44,11 +56,7 @@ async function loadBooks(){
 
     const request = await fetch('api/books/'+id, {
             method: 'DELETE',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            //body: JSON.stringify({a: 1, b: 'Textual content'})
+            headers: getHeaders()
           });
     location.reload();
     }

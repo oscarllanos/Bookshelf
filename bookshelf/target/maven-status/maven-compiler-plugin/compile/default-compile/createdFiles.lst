@@ -9,3 +9,4 @@ com\myprojects\bookshelf\dao\UserDao.class
 com\myprojects\bookshelf\dao\UserDaoImp.class
 com\myprojects\bookshelf\controllers\AuthController.class
 com\myprojects\bookshelf\models\Book.class
+com\myprojects\bookshelf\utils\JWTUtil.class

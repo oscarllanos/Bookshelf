@@ -18,12 +18,14 @@ let datos = {};
         },
         body: JSON.stringify(datos)
       });
-      const response = await request.text();
 
-      if (response == 'OK'){
-        window.location.href = 'books.html'
-      } else{
-        alert("Las credenciales son incorrectas. Por favor intente nuevamente.");
-      }
+     const response = await request.text();
+         if (response != 'FAIL'){
+             localStorage.token = response;
+             localStorage.email = datos.email;
+             window.location.href = 'books.html';
+         } else {
+             alert ("Las credenciales son incorrectas. Por favor intente nuevamente");
+         }
 
 }

@@ -2,6 +2,7 @@ package com.myprojects.bookshelf.controllers;
 
 import com.myprojects.bookshelf.dao.BookDao;
 import com.myprojects.bookshelf.models.Book;
+import com.myprojects.bookshelf.utils.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,9 +15,15 @@ public class BookController {
     @Autowired
     private BookDao bookDao;
 
+    @Autowired
+    private JWTUtil jwtUtil;
 
     @RequestMapping(value = "api/books", method = RequestMethod.GET)
-    public List<Book> getBooks(){
+    public List<Book> getBooks(@RequestHeader(value="Authorization") String token){
+        if (!validarToken(token)){
+            return null;
+        }
+
         return bookDao.getBooks();
     }
 
@@ -26,8 +33,17 @@ public class BookController {
     }
 
     @RequestMapping(value = "api/books/{id}", method = RequestMethod.DELETE)
-    public void deleteBook(@PathVariable Long id){
+    public void deleteBook(@RequestHeader(value="Authorization") String token,
+                           @PathVariable Long id){
+        if (!validarToken(token)){
+            return;
+        }
         bookDao.deleteBook(id);
+    }
+
+    private boolean validarToken(String token){
+        String usuarioId = jwtUtil.getKey(token);
+        return usuarioId != null;
     }
 
 }
