@@ -10,7 +10,7 @@ $(document).ready(function() {
 
 function updateUserEmail(){
 
-    document.getElementById('txt-email-user').outerHTML = localStorage.email;
+    document.getElementById('txt-name-user').outerHTML = localStorage.name;
 
 }
 

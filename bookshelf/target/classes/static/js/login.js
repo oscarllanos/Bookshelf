@@ -19,10 +19,10 @@ let datos = {};
         body: JSON.stringify(datos)
       });
 
-     const response = await request.text();
-         if (response != 'FAIL'){
-             localStorage.token = response;
-             localStorage.email = datos.email;
+     const response = await request.json();
+         if (response != null){
+             localStorage.token = response[1];
+             localStorage.name = response[0];
              window.location.href = 'books.html';
          } else {
              alert ("Las credenciales son incorrectas. Por favor intente nuevamente");
