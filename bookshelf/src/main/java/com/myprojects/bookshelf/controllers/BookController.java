@@ -28,7 +28,8 @@ public class BookController {
     }
 
     @RequestMapping(value = "api/books", method = RequestMethod.POST)
-    public void registerBook(@RequestBody Book book){
+    public void registerBook(@RequestHeader(value = "Authorization") String token,
+                             @RequestBody Book book){
         bookDao.register(book);
     }
 
