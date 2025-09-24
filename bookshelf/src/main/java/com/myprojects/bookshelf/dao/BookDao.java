@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BookDao {
 
-    List<Book> getBooks();
+    List<Book> getBooks(String userName);
 
     void deleteBook(Long id);
 

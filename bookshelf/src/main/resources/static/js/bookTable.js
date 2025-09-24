@@ -5,10 +5,10 @@ $(document).ready(function() {
 
   $('#bookTable').DataTable();
 
-  updateUserEmail();
+  updateUserName();
 });
 
-function updateUserEmail(){
+function updateUserName(){
 
     document.getElementById('txt-name-user').outerHTML = localStorage.name;
 
@@ -17,7 +17,7 @@ function updateUserEmail(){
 async function loadBooks(){
 
 
-      const request = await fetch('api/books', {
+      const request = await fetch('api/books/'+localStorage.name, {
         method: 'GET',
         headers: getHeaders()
       });
