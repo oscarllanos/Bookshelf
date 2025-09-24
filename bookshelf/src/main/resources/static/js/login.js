@@ -20,7 +20,7 @@ let datos = {};
       });
 
      const response = await request.json();
-         if (response != null){
+         if (response != ''){
              localStorage.token = response[1];
              localStorage.name = response[0];
              window.location.href = 'books.html';

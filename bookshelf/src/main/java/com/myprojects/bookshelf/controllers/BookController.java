@@ -18,18 +18,22 @@ public class BookController {
     @Autowired
     private JWTUtil jwtUtil;
 
-    @RequestMapping(value = "api/books", method = RequestMethod.GET)
-    public List<Book> getBooks(@RequestHeader(value="Authorization") String token){
+    @RequestMapping(value = "api/books/{userName}", method = RequestMethod.GET)
+    public List<Book> getBooks(@RequestHeader(value="Authorization") String token,
+                               @PathVariable String userName){
         if (!validarToken(token)){
             return null;
         }
 
-        return bookDao.getBooks();
+        return bookDao.getBooks(userName);
     }
 
     @RequestMapping(value = "api/books", method = RequestMethod.POST)
     public void registerBook(@RequestHeader(value = "Authorization") String token,
                              @RequestBody Book book){
+        if (!validarToken(token)){
+            return;
+        }
         bookDao.register(book);
     }
 

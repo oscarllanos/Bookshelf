@@ -16,9 +16,11 @@ public class BookDaoImp implements BookDao {
     private EntityManager entityManager;
 
     @Override
-    public List<Book> getBooks() {
-        String query = "From Book";
-        return entityManager.createQuery(query).getResultList();
+    public List<Book> getBooks(String userName) {
+        String query = "From Book WHERE userName = :userName";
+        return entityManager.createQuery(query)
+                .setParameter("userName", userName)
+                .getResultList();
     }
 
     @Override

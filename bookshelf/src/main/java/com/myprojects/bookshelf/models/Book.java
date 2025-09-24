@@ -31,4 +31,7 @@ public class Book {
     @Getter @Setter @Column(name = "En mi librero")
     private String inBookshelf;
 
+    @Getter @Setter @Column(name = "usuario")
+    private String userName;
+
 }
