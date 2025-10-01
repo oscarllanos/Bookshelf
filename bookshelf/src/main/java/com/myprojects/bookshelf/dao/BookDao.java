@@ -11,4 +11,6 @@ public interface BookDao {
     void deleteBook(Long id);
 
     void register(Book book);
+
+    List<Book> getBook(String userName, String textSearch);
 }
