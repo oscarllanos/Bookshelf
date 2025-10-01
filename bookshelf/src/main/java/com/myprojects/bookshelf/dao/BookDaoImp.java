@@ -33,4 +33,13 @@ public class BookDaoImp implements BookDao {
     public void register(Book book) {
         entityManager.merge(book);
     }
+
+    @Override
+    public List<Book> getBook(String userName, String textSearch) {
+        String query = "From Book WHERE userName = :userName AND title like :textSearch";
+        return entityManager.createQuery(query)
+                .setParameter("userName", userName)
+                .setParameter("textSearch", "%"+textSearch+"%")
+                .getResultList();
+    }
 }

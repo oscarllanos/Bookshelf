@@ -28,6 +28,17 @@ public class BookController {
         return bookDao.getBooks(userName);
     }
 
+    @RequestMapping(value = "api/books/{userName}/{textSearch}", method = RequestMethod.GET)
+    public List<Book> getBook(@RequestHeader(value="Authorization") String token,
+                               @PathVariable String userName,
+                               @PathVariable String textSearch){
+        if (!validarToken(token)){
+            return null;
+        }
+
+        return bookDao.getBook(userName, textSearch);
+    }
+
     @RequestMapping(value = "api/books", method = RequestMethod.POST)
     public void registerBook(@RequestHeader(value = "Authorization") String token,
                              @RequestBody Book book){
