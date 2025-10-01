@@ -6,8 +6,6 @@ $(document).ready(function() {
 
 async function registrarBook() {
 
-console.log("akjhsh");
-
 let datos = {};
   datos.title =document.getElementById('txtTitle').value;
   datos.author =document.getElementById('txtAuthor').value;
@@ -15,8 +13,6 @@ let datos = {};
   datos.read =document.getElementById('txtRead').value;
   datos.inBookshelf =document.getElementById('txtInBookshelf').value;
   datos.userName = localStorage.name;
-
-  console.log(datos);
 
       const request = await fetch('api/books', {
         method: 'POST',
