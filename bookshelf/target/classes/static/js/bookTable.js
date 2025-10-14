@@ -32,14 +32,16 @@ function getHeaders(){
 
 function listBooks(books) {
     let listHtml = '';
+    let id = 1;
         for (let book of books){
             let BtnUpdate = '<a href="#" class="btn btn-info btn-circle btn-sm"><i class="fas fa-info-circle"></i></a>';
             let BtnDelete= '<a href="#" onclick="deleteBook('+book.id+')" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>'
 
-            let bookHtml = '<tr><td>'+book.id+'</td><td>'+book.title+'</td><td>'+book.author
+            let bookHtml = '<tr><td>'+id+'</td><td>'+book.title+'</td><td>'+book.author
                           +'</td><td>'+book.read+'</td><td>'+book.inBookshelf
                           +'</td><td>'+BtnDelete+''+BtnUpdate+'</td></tr>';
             listHtml += bookHtml;
+            id++;
         }
         document.querySelector('#bookTable tbody').outerHTML=listHtml;
 }
