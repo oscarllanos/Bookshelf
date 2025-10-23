@@ -31,7 +31,7 @@ public class BookDaoImp implements BookDao {
 
     @Override
     public void register(Book book) {
-        entityManager.merge(book);
+            entityManager.merge(book);
     }
 
     @Override
@@ -40,6 +40,14 @@ public class BookDaoImp implements BookDao {
         return entityManager.createQuery(query)
                 .setParameter("userName", userName)
                 .setParameter("textSearch", "%"+textSearch+"%")
+                .getResultList();
+    }
+
+    @Override
+    public List<Book> updateBook(Long id) {
+        String query = "From Book WHERE id = :id";
+        return entityManager.createQuery(query)
+                .setParameter("id", id)
                 .getResultList();
     }
 }

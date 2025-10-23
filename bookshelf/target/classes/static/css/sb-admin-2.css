@@ -4108,6 +4108,8 @@ input[type="button"].btn-block {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+  border: 1px solid #d1d3e2;
+  border-radius: 0.35rem;
 }
 
 .navbar .container,
@@ -4123,7 +4125,8 @@ input[type="button"].btn-block {
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
+  font-weight: 400;
   line-height: inherit;
   white-space: nowrap;
 }
@@ -4348,6 +4351,8 @@ input[type="button"].btn-block {
 .navbar-expand {
   flex-flow: row nowrap;
   justify-content: flex-start;
+  border: 1px solid #d1d3e2;
+  border-radius: 0.35rem;
 }
 
 .navbar-expand > .container,

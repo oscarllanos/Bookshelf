@@ -6,6 +6,8 @@ $(document).ready(function() {
   $('#bookTable').DataTable();
 
   updateUserName();
+
+  localStorage.id = "0";
 });
 
 function updateUserName(){
@@ -34,7 +36,7 @@ function listBooks(books) {
     let listHtml = '';
     let id = 1;
         for (let book of books){
-            let BtnUpdate = '<a href="#" class="btn btn-info btn-circle btn-sm"><i class="fas fa-info-circle"></i></a>';
+            let BtnUpdate = '<a href="#" onclick="updateBook('+book.id+')" class="btn btn-info btn-circle btn-sm"><i class="fas fa-info-circle"></i></a>';
             let BtnDelete= '<a href="#" onclick="deleteBook('+book.id+')" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>'
 
             let bookHtml = '<tr><td>'+id+'</td><td>'+book.title+'</td><td>'+book.author
@@ -46,11 +48,19 @@ function listBooks(books) {
         document.querySelector('#bookTable tbody').outerHTML=listHtml;
 }
 
+async function updateBook(id){
+    if (!confirm('¿Desea actualizar este libro?')){
+        return;
+    }
+    localStorage.id = id;
+    window.location.href = 'register.html'
+}
+
 async function deleteBook(id){
     if (!confirm('¿Desea eliminar este libro?')){
         return;
     }
-    const request = await fetch('api/books/'+id, {
+    const request = await fetch('api/books/delete/'+id, {
             method: 'DELETE',
             headers: getHeaders()
           });

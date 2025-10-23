@@ -52,12 +52,32 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user"
-                                            id="txtRead" placeholder="Leído">
+                                        <nav class="navbar navbar-expand navbar-light bg-light mb-4">
+                                            <a class="navbar-brand" href="#">Leído</a>
+                                            <ul class="navbar-nav ml-auto">
+                                                <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle" href="#" id="readDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">No</a>
+                                                    <div class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown">
+                                                        <a class="dropdown-item" onclick="document.getElementById('readDropdown').text = 'Sí' ">Si</a>
+                                                        <a class="dropdown-item" onclick="document.getElementById('readDropdown').text = 'No' ">No</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </nav>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user"
-                                            id="txtInBookshelf" placeholder="En mi librero">
+                                        <nav class="navbar navbar-expand navbar-light bg-light mb-4">
+                                            <a class="navbar-brand" href="#">En mi librero</a>
+                                            <ul class="navbar-nav ml-auto">
+                                                <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle" href="#" id="bookshelfDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">No</a>
+                                                    <div class="dropdown-menu dropdown-menu-right animated--grow-in" aria-labelledby="navbarDropdown">
+                                                        <a class="dropdown-item" onclick="document.getElementById('bookshelfDropdown').text = 'Sí' ">Si</a>
+                                                        <a class="dropdown-item" onclick="document.getElementById('bookshelfDropdown').text = 'No' ">No</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </nav>
                                     </div>
                                 </div>
                                 <a onclick="registrarBook()" id="btnRegistrar" href="#" class="btn btn-primary btn-user btn-block">
