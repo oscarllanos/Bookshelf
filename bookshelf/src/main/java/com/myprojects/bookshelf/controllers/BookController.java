@@ -48,13 +48,23 @@ public class BookController {
         bookDao.register(book);
     }
 
-    @RequestMapping(value = "api/books/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "api/books/delete/{id}", method = RequestMethod.DELETE)
     public void deleteBook(@RequestHeader(value="Authorization") String token,
                            @PathVariable Long id){
         if (!validarToken(token)){
             return;
         }
         bookDao.deleteBook(id);
+    }
+
+    @RequestMapping(value = "api/books/update/{id}", method = RequestMethod.GET)
+    public List<Book> updateBook(@RequestHeader(value="Authorization") String token,
+                           @PathVariable Long id){
+        if (!validarToken(token)){
+            return null;
+        }
+        return bookDao.updateBook(id);
+
     }
 
     private boolean validarToken(String token){

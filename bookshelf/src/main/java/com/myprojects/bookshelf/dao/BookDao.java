@@ -13,4 +13,6 @@ public interface BookDao {
     void register(Book book);
 
     List<Book> getBook(String userName, String textSearch);
+
+    List<Book> updateBook(Long id);
 }
