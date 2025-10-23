@@ -3,7 +3,7 @@ $(document).ready(function() {
 
     loadBooks();
 
-  $('#bookTable').DataTable();
+  $('#bookTable').dataTable();
 
   updateUserName();
 
