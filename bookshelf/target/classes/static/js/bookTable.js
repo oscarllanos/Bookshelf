@@ -3,8 +3,6 @@ $(document).ready(function() {
 
     loadBooks();
 
-  $('#bookTable').dataTable();
-
   updateUserName();
 
   localStorage.id = "0";
@@ -21,7 +19,29 @@ async function loadBooks(){
         headers: getHeaders()
     });
     const books = await request.json();
-    listBooks(books);
+    //listBooks(books);
+    $('#dataTable').DataTable({
+                        data: books,
+                        columns: [
+                                { data: 'title' },
+                                { data: 'author' },
+                                { data: 'read' },
+                                { data: 'inBookshelf' },
+                                { data: 'id',
+                                  render: function (data, type) {
+                                              if (type === 'display') {
+                                                 let BtnUpdate = "<a href='#' onclick='updateBook("+data
+                                                                 +")' class='btn btn-info btn-circle btn-sm'><i class='fas fa-info-circle'></i></a>";
+                                                 let BtnDelete= "<a href='#' onclick='deleteBook("+data
+                                                                 +")' class='btn btn-danger btn-circle btn-sm'><i class='fas fa-trash'></i></a>"
+
+                                                 return '<td>'+BtnDelete+'  '+BtnUpdate+'</td>'
+                                              }
+                                           return data;
+                                           }
+                                }
+                            ]
+                    });
 }
 
 function getHeaders(){
@@ -30,22 +50,6 @@ function getHeaders(){
         'Content-Type': 'application/json',
         'Authorization': localStorage.token
     };
-}
-
-function listBooks(books) {
-    let listHtml = '';
-    let id = 1;
-        for (let book of books){
-            let BtnUpdate = '<a href="#" onclick="updateBook('+book.id+')" class="btn btn-info btn-circle btn-sm"><i class="fas fa-info-circle"></i></a>';
-            let BtnDelete= '<a href="#" onclick="deleteBook('+book.id+')" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>'
-
-            let bookHtml = '<tr><td>'+id+'</td><td>'+book.title+'</td><td>'+book.author
-                          +'</td><td>'+book.read+'</td><td>'+book.inBookshelf
-                          +'</td><td>'+BtnDelete+''+BtnUpdate+'</td></tr>';
-            listHtml += bookHtml;
-            id++;
-        }
-        document.querySelector('#bookTable tbody').outerHTML=listHtml;
 }
 
 async function updateBook(id){
